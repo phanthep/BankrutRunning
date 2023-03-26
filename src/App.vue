@@ -75,7 +75,7 @@
                                     </div>-->
                                     <hr/>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-lg btn-primary">บันทึก</button>
+                                        <button type="submit" class="btn btn-lg btn-primary"><span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>บันทึก</button>
                                     </div>
                                 </form>                                  
                                 <div class="text-center">                
