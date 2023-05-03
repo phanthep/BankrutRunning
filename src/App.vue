@@ -4,53 +4,53 @@
             <v-app-bar color="teal-darken-4" image="img/Banner.png">        
                 <template v-slot:image>
                 <v-img
-                    gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
+                gradient="to top right, rgba(2, 56, 110,.8), rgba(204, 249, 255,.8)"
+                    
                 ></v-img>
+                <!--gradient="to top right, rgba(240, 116, 112,.8), rgba(204, 249, 255,.8)"
+                    gradient="to top right, rgba(31, 31, 255,.8), rgba(204, 249, 255,.8)"-->
                 </template>  
                 <template v-slot:prepend>                    
-                <v-avatar :image="user.pictureUrl" @click.stop="drawer = !drawer"></v-avatar>
+                <v-avatar size="49" :image="user.pictureUrl" @click.stop="drawer = !drawer && isLogin"></v-avatar>
                 <!--<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>-->
                 </template>      
-            <v-toolbar-title>Bankrut Beach Running</v-toolbar-title>    
+            <v-toolbar-title>
+                <div>
+                    <strong>Bankrut Beach Running</strong>
+                </div>                
+                <div class="pt-0" v-show="isLogin">
+                    สวัสดีคุณ : {{user.userName}}
+                </div>
+            </v-toolbar-title>                            
             <v-btn            
                 v-for="(item,i) in items"          
-                :key="i"
+                :key="i"                
                 :icon="item.icon"
                 variant="text"
                 :href="item.link"
                 target="_blank">
             </v-btn>        
             </v-app-bar>   
-            <v-main class="bg-grey-lighten-2">                
-                <div id="nav" v-show="isLogin">                    
-                    <router-link to="/">Home</router-link> |
-                    <router-link to="/register">Register</router-link> |
-                    <router-link to="/about">About</router-link>
-                    <br/>                
-                    <h3>สวัสดีคุณ : {{user.userName}}</h3>
-                    <!--<img :src="user.pictureUrl" alt="Bankrut Running" class="brand-image img-circle elevation-3" style="opacity: .8; border-radius: 50%">
-                    <v-avatar image="user.pictureUrl" size="350"></v-avatar>-->
-                </div>
-                <router-view></router-view> 
+            <v-main class="bg-blue-lighten-4">
+                <v-container>
+                    <router-view></router-view> 
+                </v-container>
             </v-main>
-            <!--<v-navigation-drawer
-            v-model="drawer"
-            temporary
-            >    
-                <router-link to="/register"></router-link><v-list-item :to="{ name: 'register'}" prepend-icon="mdi-home" title="Register" value="home"></v-list-item>
-                <v-list-item :to="{name: 'about'}" prepend-icon="mdi-account-group-outline" title="about" value="about"></v-list-item>
+            <v-navigation-drawer v-model="drawer" temporary>      
+                <v-list-item :to="{name: 'home'}" prepend-icon="mdi-home" title="Home" value="home"></v-list-item>
+                <v-list-item :to="{name: 'register'}" prepend-icon="mdi-run-fast" title="Register" value="register"></v-list-item>                
+                <v-divider></v-divider>
+                <v-list-item :to="{name: 'about'}" prepend-icon="mdi-account" title="About" value="about"></v-list-item>                
             </v-navigation-drawer>    
-            <v-main class="bg-grey-lighten-2">        
-                xxxxxxxxxxx    
-            </v-main>-->
-
-            <v-footer app class="bg-indigo-lighten-1 text-center d-flex flex-column">  
-                <div class="pt-0">
-                    ยินดีต้อนรับ
+            
+            <v-footer app class="bg-blue-lighten-1 text-center d-flex flex-column">  
+                <div class="pt-0">                    
+                    บ้านกรูด ยินดีต้อนรับ🙏
                 </div>                  
-                <v-divider></v-divider>                  
+                <v-divider></v-divider>
             <div>
-                {{ new Date().getFullYear() }} — <strong>ชมรมธุรกิจท่องเที่ยวบ้านกรูด</strong>
+                <strong>ชมรมธุรกิจท่องเที่ยวบ้านกรูด (ช.ท.บก.)</strong>
+                 <!--<strong>Bankrut Tourism Business Club (B.T.B.C.)</strong>-->
             </div>
             </v-footer>
         </v-app>
@@ -74,7 +74,7 @@ export default defineComponent({
     return {
         drawer: true,
         user,
-        isLogin: true, 
+        isLogin: false, 
         message: "",
         error: "",
         items: [
@@ -92,7 +92,7 @@ export default defineComponent({
     liff
       .init({
         liffId: import.meta.env.VITE_LIFF_ID,
-        //withLoginOnExternalBrowser: true
+        withLoginOnExternalBrowser: true
       })
       .then(async () => {
         this.message = "LIFF init succeeded.";

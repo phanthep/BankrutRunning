@@ -3,7 +3,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue';
 
 import Home from './pages/home.vue'
-import Register from './pages/register.vue'
+import Register from './pages/register/index.vue'
+import RegisterDetail from './pages/register/registerDetail.vue'
 import About from './pages/about.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
