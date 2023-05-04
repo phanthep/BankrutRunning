@@ -74,7 +74,7 @@ export default defineComponent({
     return {
         drawer: true,
         user,
-        isLogin: false, 
+        isLogin: true, 
         message: "",
         error: "",
         items: [
@@ -92,7 +92,7 @@ export default defineComponent({
     liff
       .init({
         liffId: import.meta.env.VITE_LIFF_ID,
-        withLoginOnExternalBrowser: true
+        //withLoginOnExternalBrowser: true
       })
       .then(async () => {
         this.message = "LIFF init succeeded.";
