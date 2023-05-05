@@ -4,7 +4,11 @@ import App from './App.vue';
 
 import Home from './pages/home.vue'
 import Register from './pages/register/index.vue'
-import RegisterDetail from './pages/register/registerDetail.vue'
+import RegisterForm from './pages/register/registerForm.vue'
+import RaceType from './pages/register/raceType.vue'
+import SelectShirt from './pages/register/selectShirt.vue'
+import Payment from './pages/register/payment.vue'
+import Verification from './pages/register/verification.vue'
 import About from './pages/about.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -25,6 +29,11 @@ const router = createRouter({
     routes: [
       { path: '/', component: Home, name: 'home' },
       { path: '/register', component: Register, name: 'register' },
+      { path: '/register/registerForm', component: RegisterForm, name: 'registerForm' },
+      { path: '/register/raceType', component: RaceType, name: 'raceType' },
+      { path: '/register/selectShirt', component: SelectShirt, name: 'selectShirt'},
+      { path: '/register/payment', component: Payment, name: 'payment'},
+      { path: '/register/verification', component: Verification, name: 'verification'},
       { path: '/about', component: About, name: 'about' }
     ]
 })

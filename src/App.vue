@@ -37,10 +37,11 @@
                 </v-container>
             </v-main>
             <v-navigation-drawer v-model="drawer" temporary>      
-                <v-list-item :to="{name: 'home'}" prepend-icon="mdi-home" title="Home" value="home"></v-list-item>
-                <v-list-item :to="{name: 'register'}" prepend-icon="mdi-run-fast" title="Register" value="register"></v-list-item>                
+                <v-list-item :to="{name: 'home'}" prepend-icon="mdi-home" title="หน้าหลัก" value="้home"></v-list-item>
+                <v-list-item :to="{name: 'register'}" prepend-icon="mdi-run-fast" title="ลงทะเบียนวิ่ง" value="register"></v-list-item>
+                
                 <v-divider></v-divider>
-                <v-list-item :to="{name: 'about'}" prepend-icon="mdi-account" title="About" value="about"></v-list-item>                
+                <v-list-item :to="{name: 'about'}" prepend-icon="mdi-account" title="เกี่ยวกับ" value="about"></v-list-item>
             </v-navigation-drawer>    
             
             <v-footer app class="bg-blue-lighten-1 text-center d-flex flex-column">  

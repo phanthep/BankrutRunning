@@ -1,5 +1,7 @@
 <template>
-  <v-timeline side="end">
+  <v-container class="bg-blue-grey-lighten-1">
+    <h3>ขั้นตอนการลงทะเบียนวิ่ง</h3>
+  <v-timeline side="end" align="start">
     <v-timeline-item
       v-for="(item, i) in items"
       :key="i"
@@ -7,54 +9,92 @@
       :icon="item.icon"
       fill-dot
     >
-      <v-card>
-        <v-card-title :class="['text-h6', `bg-${item.color}`]">
-          {{item.step}}
+      <v-card>        
+        <v-card-title :class="['text-left text-h6', `bg-${item.color}`]">                    
+          <v-icon :icon="item.topicId"></v-icon> 
+          <v-text class="me-2">{{item.topic}}</v-text>
+          <v-avatar :icon="item.done" size="24"></v-avatar>
+          <!--<v-avatar color="white" icon="mdi-radiobox-blank" size="22"></v-avatar>-->                    
         </v-card-title>
-        <v-card-text class="bg-white text--primary">
-          <p>กรุณากรอกข้อมูลของท่านเพื่อเป็นข้อมูลสำหรับลงทะเบียนวิ่ง</p>
-          <v-btn
-            :color="item.color"
-            variant="outlined"
-          >
-            Button
-          </v-btn>
+        <v-card-text class="bg-white">          
+          <p>{{item.detail}}</p>
+          <router-link :to="item.linkto">
+            <v-btn
+              :color="item.color"
+              variant="outlined"
+            >
+              {{item.topic}}
+            </v-btn>
+        </router-link>
         </v-card-text>
       </v-card>
-    </v-timeline-item>
+    </v-timeline-item>    
   </v-timeline>
+  <div class="text-center">
+  <v-card-actions>
+    <v-row align="center">
+      <v-col>
+        <router-link to="/register/registerForm">
+        <v-btn append-icon="mdi-page-next" color="blue">
+          ดำเนินการต่อ
+        </v-btn></router-link>
+      </v-col>
+    </v-row>
+  </v-card-actions>  
+  </div>
+  </v-container>
 </template>
 
-<script>
+<script lang="ts">
   export default {
     data: () => ({
       items: [
         {
-          color: 'red-lighten-2',
-          icon: 'mdi-star',
-          step: 'กรอกข้อมูล'
+          color: 'red-lighten-3',
+          icon: 'mdi-account-edit',
+          topicId: 'mdi-numeric-1-box',
+          topic: 'กรอกข้อมูล',
+          done: 'mdi-check-circle-outline',
+          detail: 'กรุณากรอกข้อมูลของท่านเพื่อเป็นข้อมูลสำหรับลงทะเบียนวิ่ง',
+          linkto: '/register/registerForm'
         },
         {
-          color: 'purple-lighten-2',
-          icon: 'mdi-book-variant',
-          step: 'เลือกระยะวิ่ง'
+          color: 'teal-lighten-3',
+          icon: 'mdi-run-fast',
+          topicId: 'mdi-numeric-2-box',
+          topic: 'เลือกระยะวิ่ง',
+          done: 'mdi-radiobox-blank',
+          detail: 'เลือกระยะวิ่งที่ต้องการ',
+          linkto: '/register/raceType'
         },
         {
-          color: 'green-lighten-1',
-          icon: 'mdi-airballoon',
-          step: 'เลือกเสื้อ'
+          color: 'yellow-lighten-2',
+          icon: 'mdi-tshirt-v-outline',
+          topicId: 'mdi-numeric-3-box',
+          topic: 'เลือกเสื้อ',
+          done: 'mdi-radiobox-blank',
+          detail: 'เลือกขนาดและสีเสื้อวิ่ง S, L, XL, XXL, XXXL',
+          linkto: '/register/selectShirt'
         },
         {
-          color: 'blue-lighten-1',
-          icon: 'mdi-airballoon',
-          step: 'ชำระเงิน'
+          color: 'blue-lighten-2',
+          icon: 'mdi-currency-usd',
+          topicId: 'mdi-numeric-4-box',
+          topic: 'ชำระเงิน',
+          done: 'mdi-radiobox-blank',
+          detail: 'โปรดชำระเงินภายใน 1 วันเพื่อยืนยันการสมัครวิ่ง',
+          linkto: '/register/payment'
         },
         {
-          color: 'indigo-lighten-2',
-          icon: 'mdi-layers-triple',
-          step: 'รอการอนุมัติ'
+          color: 'green-lighten-2',
+          icon: 'mdi-check-decagram',
+          topicId: 'mdi-numeric-5-box',
+          topic: 'รอตรวจสอบ',
+          done: "mdi-radiobox-blank",
+          detail: 'รอเจ้าหน้าที่ตรวจสอบไม่เกิน 3 วันทำการ',
+          linkto: '/register/verification'
         },
       ],
-    }),
+    })
   }
 </script>

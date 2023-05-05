@@ -1,3 +1,0 @@
-<template>
-    รายละเอียดของงาน
-</template>

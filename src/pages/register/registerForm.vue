@@ -1,6 +1,6 @@
 <template>
     <div v-show="true">          
-      <v-card color="#385F73" theme="dark">
+      <!--<v-card color="#385F73" theme="dark">
           <v-card-title class="text-h6">
             ขั้นตอนการลงทะเบียนวิ่ง
           </v-card-title>
@@ -34,13 +34,14 @@
         </v-card>      
       <v-divider></v-divider>
       <br/>
+      -->
       <v-card color="#385F73" theme="dark">
         <v-card-title class="text-h6">
           กรอกข้อมูลลงทะเบียน
         </v-card-title>      
         <!--<v-sheet width="400" class="mx-auto">-->
         <form @submit.prevent="submit">            
-            <v-container class="bg-surface-variant">
+            <v-container class="bg-blue-grey-lighten-1">
               <v-row>
                 <v-col>                  
                   <v-card color="white">
@@ -149,7 +150,19 @@
               <v-row>
                 <v-col>                  
                   <v-btn class="me-4" type="submit">submit</v-btn>
-                  <v-btn @click="handleReset">clear</v-btn>
+                  <v-btn class="me-4" @click="handleReset">clear</v-btn>
+                  <router-link to="/register">
+                    <v-btn append-icon="mdi-page-next">
+                      TimeLine
+                    </v-btn>
+                  </router-link>                                    
+                </v-col>
+              </v-row>
+              <br/>
+              <v-row>
+                <v-col>
+                  <v-btn @click="run.ChangeStep('race')">Next Step</v-btn>
+                  <div>Current Register Step: {{ run.GetStep }}</div>
                 </v-col>
               </v-row>
             </v-container>
@@ -160,9 +173,10 @@
 
 <script lang="ts">
   import { ref } from 'vue'
-  import { reactive } from 'vue'
+  import { reactive } from 'vue'  
   import { useField, useForm } from 'vee-validate'
-
+  import { useRunStore } from '../../stores/run'
+  //const run = useRunStore()
   const runner = reactive({
     userId: "",
     userName: "?",
@@ -179,7 +193,8 @@
     })
 
   export default {
-    setup () {        
+    setup () {       
+      const run = useRunStore() 
       const { handleSubmit, handleReset } = useForm({        
         validationSchema: {
           name (value :any) {
@@ -221,7 +236,7 @@
         alert(JSON.stringify(values, null, 2))
       })
 
-      return { runner, name, phone, email, select, checkbox, items, submit, handleReset }
+      return { run, runner, name, phone, email, select, checkbox, items, submit, handleReset }
     },
   }
 </script>
