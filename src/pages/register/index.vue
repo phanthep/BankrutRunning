@@ -18,14 +18,15 @@
         </v-card-title>
         <v-card-text class="bg-white">          
           <p>{{item.detail}}</p>
-          <!--<router-link :to="item.linkto">
-            <v-btn
-              :color="item.color"
-              variant="outlined"
-            >
-              {{item.topic}}
-            </v-btn>
-        </router-link>-->
+          <div v-show="item.canEdit">
+            <router-link :to="item.linkto">
+              <v-btn
+                :color="item.color"
+                variant="outlined">
+                แก้ไขข้อมูล
+              </v-btn>
+            </router-link>
+          </div>
         </v-card-text>
       </v-card>
     </v-timeline-item>    
@@ -66,6 +67,7 @@
             topic: 'กรอกข้อมูล',
             done: 'mdi-radiobox-blank',
             detail: 'กรุณากรอกข้อมูลของท่านเพื่อเป็นข้อมูลสำหรับลงทะเบียนวิ่ง',
+            canEdit:false,
             linkto: '/register/registerForm'
           },
           {
@@ -75,6 +77,7 @@
             topic: 'เลือกระยะวิ่ง',
             done: 'mdi-radiobox-blank',
             detail: 'เลือกระยะวิ่งที่ต้องการ',
+            canEdit:false,
             linkto: '/register/raceType'
           },
           {
@@ -84,6 +87,7 @@
             topic: 'เลือกเสื้อ',
             done: 'mdi-radiobox-blank',
             detail: 'เลือกขนาดและสีเสื้อวิ่ง S, L, XL, XXL, XXXL',
+            canEdit:false,
             linkto: '/register/selectShirt'
           },
           {
@@ -93,6 +97,7 @@
             topic: 'ชำระเงิน',
             done: 'mdi-radiobox-blank',
             detail: 'โปรดชำระเงินภายใน 1 วันเพื่อยืนยันการสมัครวิ่ง',
+            canEdit:false,
             linkto: '/register/payment'
           },
           {
@@ -102,6 +107,7 @@
             topic: 'รอตรวจสอบ',
             done: "mdi-radiobox-blank",
             detail: 'รอเจ้าหน้าที่ตรวจสอบไม่เกิน 3 วันทำการ',
+            canEdit:false,
             linkto: '/register/verification'
           }
         ]
@@ -111,6 +117,7 @@
       let currentStep = this.run.GetStep;
       for (let i = 0; i < currentStep - 1; i++) {
         this.items[i].done = 'mdi-check-circle-outline';        
+        this.items[i].canEdit = true;
       }
       
         switch(this.run.GetStep) { 

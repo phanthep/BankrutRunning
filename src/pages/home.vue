@@ -36,23 +36,23 @@
     },
     mounted() {              
         switch(this.run.GetStep) { 
-          case "": { 
+          case 1: { 
             this.nextStepLink = '/register/registerForm';
               break; 
           } 
-          case 'race': { 
+          case 2: { 
             this.nextStepLink = '/register/raceType'
               break; 
           } 
-          case 'shirt': { 
+          case 3: { 
             this.nextStepLink = '/register/selectShirt'
               break; 
           } 
-          case 'payment': { 
+          case 4: { 
             this.nextStepLink = '/register/payment'
               break; 
           } 
-          case 'verification': { 
+          case 5: { 
             this.nextStepLink = '/register/verification'
               break; 
           } 

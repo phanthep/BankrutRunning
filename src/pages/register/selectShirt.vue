@@ -9,13 +9,9 @@
                         ขั้นตอนทั้งหมด
                     </v-btn>
                 </router-link>
-                <v-btn @click="run.ChangeStep(4)">Next Step</v-btn>
-                <v-row>
-                    <v-col>                        
-                  <div>Current Register Step: {{ run.GetStep }}</div>
-                    </v-col>
-                </v-row>                
-                <!--<v-avatar image="/img/BankrutProfileImage.jpg" size="350"></v-avatar>-->            
+                <router-link to="/register/payment">
+                    <v-btn @click="run.UpdateCurrentStep(4)">ดำเนินการต่อ</v-btn>                
+                </router-link>
             </div>
         </v-container>
     </div>

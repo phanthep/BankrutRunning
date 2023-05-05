@@ -9,10 +9,10 @@
                     <v-btn append-icon="mdi-page-next">
                         ขั้นตอนทั้งหมด
                     </v-btn>
-                </router-link>                                
-                <v-btn @click="run.ChangeStep(3)">Next Step</v-btn>
-                <div>Current Register Step: {{ run.GetStep }}</div>
-                <!--<v-avatar image="/img/BankrutProfileImage.jpg" size="350"></v-avatar>-->            
+                </router-link> 
+                <router-link to="/register/selectShirt">
+                    <v-btn @click="run.UpdateCurrentStep(3)">ดำเนินการต่อ</v-btn>
+                </router-link>
             </div>
         </v-container>
     </div>

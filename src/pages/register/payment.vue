@@ -3,15 +3,16 @@
         <v-container class="bg-blue-grey-lighten-1">
             <div class="text-center">
                 <v-img src="/img/payment.jpg"></v-img>
+                <h3>หลังจากยืนยันการชำระเงินแล้ว จะไม่สามารถแก้ไขข้อมูลก่อนหน้าได้ กรุณาตรวจสอบความถูกต้องอีกครั้งก่อนยืนยันชำระเงิน</h3>
                 <br/>
                 <router-link to="/register" class="me-4">
                     <v-btn append-icon="mdi-page-next">
                         ขั้นตอนทั้งหมด
                     </v-btn>
                 </router-link>
-                <v-btn @click="run.ChangeStep(5)">Next Step</v-btn>
-                <div>Current Register Step: {{ run.GetStep }}</div>
-                <!--<v-avatar image="/img/BankrutProfileImage.jpg" size="350"></v-avatar>-->            
+                <router-link to="/register/verification">
+                    <v-btn @click="run.UpdateCurrentStep(5)">ดำเนินการต่อ</v-btn>                
+                </router-link>
             </div>
         </v-container>
     </div>

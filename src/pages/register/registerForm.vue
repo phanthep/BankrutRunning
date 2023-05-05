@@ -55,11 +55,12 @@
               <v-row>
                 <v-col>
                   <v-card color="white">
-                    <v-text-field
+                    <v-text-field                      
                       v-model.trim="runner.name"
                       :counter="50"
                       :error-messages="name.errorMessage.value"
-                      label="ชื่อ [ตามหน้าบัตรประจำตัวประชาชน]">
+                      label="ชื่อ [ตามหน้าบัตรประจำตัวประชาชน]"
+                      required>
                     </v-text-field>                    
                   </v-card>
                 </v-col>
@@ -161,8 +162,9 @@
               <br/>
               <v-row>
                 <v-col>
-                  <v-btn @click="run.ChangeStep('race')">Next Step</v-btn>
-                  <div>Current Register Step: {{ run.GetStep }}</div>
+                  <router-link to="/register/raceType">
+                    <v-btn @click="run.UpdateCurrentStep(2)">ดำเนินการต่อ</v-btn>
+                  </router-link>                  
                 </v-col>
               </v-row>
             </v-container>
@@ -238,7 +240,6 @@
         alert(JSON.stringify(values, null, 2))
       })
       
-
       return { run, runner, name, phone, email, select, checkbox, items, submit, handleReset }
     },
   }
