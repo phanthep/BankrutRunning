@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
-
+import { useLocalStorage } from '@vueuse/core';
 export const useRunStore = defineStore('runStore', {
   state: () => ({
-    registerStep: 'register'
+    registerStep: useLocalStorage('registerStep','payment')    
   }),
   getters: {
     GetStep: (state) => state.registerStep

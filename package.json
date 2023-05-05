@@ -9,6 +9,7 @@
   "dependencies": {
     "@line/liff": "2.21.4",
     "@popperjs/core": "^2.11.7",
+    "@vueuse/core": "^10.1.2",
     "pinia": "^2.0.35",
     "vee-validate": "^4.8.6",
     "vue": "3.2.47",

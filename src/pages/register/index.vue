@@ -25,7 +25,7 @@
             >
               {{item.topic}}
             </v-btn>
-        </router-link>
+        </router-link>        
         </v-card-text>
       </v-card>
     </v-timeline-item>    
@@ -35,7 +35,7 @@
     <v-row align="center">
       <v-col>
         <router-link to="/register/registerForm">
-        <v-btn append-icon="mdi-page-next" color="blue">
+        <v-btn append-icon="mdi-page-next" variant="flat" color="primary">
           ดำเนินการต่อ
         </v-btn></router-link>
       </v-col>
@@ -46,8 +46,9 @@
 </template>
 
 <script lang="ts">
-  export default {
-    data: () => ({
+  import { useRunStore } from '../../stores/run'
+  export default {    
+    data: () => ({      
       items: [
         {
           color: 'red-lighten-3',
@@ -94,7 +95,26 @@
           detail: 'รอเจ้าหน้าที่ตรวจสอบไม่เกิน 3 วันทำการ',
           linkto: '/register/verification'
         },
-      ],
-    })
+      ]            
+    }),
+    method: {
+      NextStep() {
+        switch(expression) { 
+          case constant-expression1: { 
+              //statements; 
+              break; 
+          } 
+          case constant_expression2: { 
+              //statements; 
+              break; 
+          } 
+          default: { 
+              //statements; 
+              break; 
+          } 
+        } 
+
+      }
+    }
   }
 </script>

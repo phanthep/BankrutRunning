@@ -173,7 +173,8 @@
 
 <script lang="ts">
   import { ref } from 'vue'
-  import { reactive } from 'vue'  
+  import { reactive } from 'vue'    
+  import { useLocalStorage } from '@vueuse/core';
   import { useField, useForm } from 'vee-validate'
   import { useRunStore } from '../../stores/run'
   //const run = useRunStore()
@@ -195,6 +196,7 @@
   export default {
     setup () {       
       const run = useRunStore() 
+      const localStorage = useLocalStorage('registeStep','shirt')
       const { handleSubmit, handleReset } = useForm({        
         validationSchema: {
           name (value :any) {
@@ -235,6 +237,7 @@
       const submit = handleSubmit(values => {
         alert(JSON.stringify(values, null, 2))
       })
+      
 
       return { run, runner, name, phone, email, select, checkbox, items, submit, handleReset }
     },
