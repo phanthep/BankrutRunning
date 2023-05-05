@@ -6,7 +6,7 @@
                 <br/>
                 <router-link to="/register" class="me-4">                    
                     <v-btn append-icon="mdi-page-next">
-                        TimeLine
+                        ขั้นตอนทั้งหมด
                     </v-btn>
                 </router-link>
                 <v-btn @click="run.ChangeStep('payment')">Next Step</v-btn>

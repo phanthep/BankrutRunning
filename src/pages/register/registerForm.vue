@@ -153,7 +153,7 @@
                   <v-btn class="me-4" @click="handleReset">clear</v-btn>
                   <router-link to="/register">
                     <v-btn append-icon="mdi-page-next">
-                      TimeLine
+                      ขั้นตอนทั้งหมด
                     </v-btn>
                   </router-link>                                    
                 </v-col>

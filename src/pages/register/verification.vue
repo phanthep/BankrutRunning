@@ -3,14 +3,13 @@
         <v-container class="bg-blue-grey-lighten-1">
             <div class="text-center">
                 <!--<v-img src="/img/shirt.jpg"></v-img>-->
-                Verifycation
+                <h3>รอเจ้าหน้าที่ตรวจสอบ หากเกิน 3 วันทำการ กรุณาติดต่อได้ที่เบอร์ 099-9999999</h3>
                 <br/>
                 <router-link to="/register">                    
                     <v-btn append-icon="mdi-page-next">
-                        TimeLine
+                        ขั้นตอนทั้งหมด
                     </v-btn>
-                </router-link>
-                <div>Current Register Step: {{ run.GetStep }}</div>
+                </router-link>                
             </div>
         </v-container>
     </div>
