@@ -9,7 +9,7 @@
                         ขั้นตอนทั้งหมด
                     </v-btn>
                 </router-link>
-                <v-btn @click="run.ChangeStep('verification')">Next Step</v-btn>
+                <v-btn @click="run.ChangeStep(5)">Next Step</v-btn>
                 <div>Current Register Step: {{ run.GetStep }}</div>
                 <!--<v-avatar image="/img/BankrutProfileImage.jpg" size="350"></v-avatar>-->            
             </div>

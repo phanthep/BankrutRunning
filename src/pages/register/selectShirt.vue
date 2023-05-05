@@ -9,7 +9,7 @@
                         ขั้นตอนทั้งหมด
                     </v-btn>
                 </router-link>
-                <v-btn @click="run.ChangeStep('payment')">Next Step</v-btn>
+                <v-btn @click="run.ChangeStep(4)">Next Step</v-btn>
                 <v-row>
                     <v-col>                        
                   <div>Current Register Step: {{ run.GetStep }}</div>

@@ -64,7 +64,7 @@
             icon: 'mdi-account-edit',
             topicId: 'mdi-numeric-1-box',
             topic: 'กรอกข้อมูล',
-            done: 'mdi-check-circle-outline',
+            done: 'mdi-radiobox-blank',
             detail: 'กรุณากรอกข้อมูลของท่านเพื่อเป็นข้อมูลสำหรับลงทะเบียนวิ่ง',
             linkto: '/register/registerForm'
           },
@@ -107,25 +107,30 @@
         ]
       }
     },
-    mounted() {              
+    mounted() { 
+      let currentStep = this.run.GetStep;
+      for (let i = 0; i < currentStep - 1; i++) {
+        this.items[i].done = 'mdi-check-circle-outline';        
+      }
+      
         switch(this.run.GetStep) { 
-          case "": { 
+          case 1: { 
             this.nextStepLink = '/register/registerForm';
               break; 
           } 
-          case 'race': { 
+          case 2: { 
             this.nextStepLink = '/register/raceType'
               break; 
           } 
-          case 'shirt': { 
+          case 3: { 
             this.nextStepLink = '/register/selectShirt'
               break; 
           } 
-          case 'payment': { 
+          case 4: { 
             this.nextStepLink = '/register/payment'
               break; 
           } 
-          case 'verification': { 
+          case 5: { 
             this.nextStepLink = '/register/verification'
               break; 
           } 
