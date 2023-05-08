@@ -41,7 +41,8 @@
                 <v-list-item :to="{name: 'register'}" prepend-icon="mdi-run-fast" title="ลงทะเบียนวิ่ง" value="register"></v-list-item>
                 
                 <v-divider></v-divider>
-                <v-list-item :to="{name: 'about'}" prepend-icon="mdi-account" title="เกี่ยวกับ" value="about"></v-list-item>
+                <br/>                
+                <v-btn prepend-icon="mdi-exit-run" color="blue-darken-4" @click="CloseApplication">ออกจากโปรแกรม</v-btn>
             </v-navigation-drawer>    
             
             <v-footer app class="bg-blue-lighten-1 text-center d-flex flex-column">  
@@ -75,7 +76,7 @@ export default defineComponent({
     return {
         drawer: true,
         user,
-        isLogin: false, 
+        isLogin: true, 
         message: "",
         error: "",
         items: [
@@ -89,11 +90,17 @@ export default defineComponent({
         ]
     };
   },
+  methods: {
+    CloseApplication() {
+        liff.closeWindow();
+        window.close();
+    }
+  },
   mounted() {
     liff
       .init({
         liffId: import.meta.env.VITE_LIFF_ID,
-        withLoginOnExternalBrowser: true
+        //withLoginOnExternalBrowser: true
       })
       .then(async () => {
         this.message = "LIFF init succeeded.";

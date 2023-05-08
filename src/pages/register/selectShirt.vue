@@ -4,13 +4,13 @@
             <div class="text-center">
                 <v-img src="/img/shirt.jpg"></v-img>
                 <br/>
-                <router-link to="/register" class="me-4">                    
-                    <v-btn append-icon="mdi-page-next">
-                        ขั้นตอนทั้งหมด
+                <router-link class="me-4" to="/register">
+                    <v-btn color="blue-darken-4" append-icon="mdi-timeline-check-outline">
+                      ขั้นตอนทั้งหมด
                     </v-btn>
                 </router-link>
                 <router-link to="/register/payment">
-                    <v-btn @click="run.UpdateCurrentStep(4)">ดำเนินการต่อ</v-btn>                
+                    <v-btn color="blue-darken-4" append-icon="mdi-content-save-move" @click="run.UpdateCurrentStep(4)">ดำเนินการต่อ</v-btn>                
                 </router-link>
             </div>
         </v-container>

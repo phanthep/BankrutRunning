@@ -5,11 +5,11 @@
                 <!--<v-img src="/img/shirt.jpg"></v-img>-->
                 <h3>รอเจ้าหน้าที่ตรวจสอบ หากเกิน 3 วันทำการ กรุณาติดต่อได้ที่เบอร์ 099-9999999</h3>
                 <br/>
-                <router-link to="/register">                    
-                    <v-btn append-icon="mdi-page-next">
-                        ขั้นตอนทั้งหมด
+                <router-link class="me-4" to="/register">
+                    <v-btn color="blue-darken-4" append-icon="mdi-timeline-check-outline">
+                      ขั้นตอนทั้งหมด
                     </v-btn>
-                </router-link>                
+                </router-link>
             </div>
         </v-container>
     </div>

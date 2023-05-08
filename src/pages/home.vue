@@ -8,12 +8,12 @@
             <v-img src="/img/Welcome0.png"></v-img>
             <br/>
             <router-link to="/register" class="me-4">                    
-                <v-btn append-icon="mdi-timeline-check-outline" color="primary">
+                <v-btn append-icon="mdi-timeline-check-outline" color="blue-darken-4">
                 ขั้นตอนทั้งหมด
                 </v-btn>
             </router-link>
             <router-link :to="nextStepLink" class="me-4">                    
-                <v-btn append-icon="mdi-run-fast" color="primary">
+                <v-btn append-icon="mdi-run-fast" color="blue-darken-4">
                 ลงทะเบียนวิ่ง
                 </v-btn>
             </router-link>

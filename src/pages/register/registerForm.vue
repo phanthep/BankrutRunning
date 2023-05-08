@@ -1,172 +1,106 @@
 <template>
     <div v-show="true">          
-      <!--<v-card color="#385F73" theme="dark">
-          <v-card-title class="text-h6">
-            ขั้นตอนการลงทะเบียนวิ่ง
-          </v-card-title>
-          <v-timeline direction="horizontal">
-        <v-timeline-item dot-color="green">
-          <template v-slot:opposite>
-            กรอกข้อมูล
-          </template>          
-        </v-timeline-item>
-        <v-timeline-item dot-color="white">
-          <template v-slot:opposite>
-            เลือกเสื้อ
-          </template>          
-        </v-timeline-item>        
-        <v-timeline-item dot-color="white">
-          <template v-slot:opposite>
-            ชำระเงิน
-          </template>          
-        </v-timeline-item>
-        <v-timeline-item dot-color="white">
-          <template v-slot:opposite>
-            รออนุมัติ
-          </template>          
-        </v-timeline-item>
-      </v-timeline>          
-          <v-card-actions>
-            <v-btn variant="text">
-            ดำเนินการต่อ
-            </v-btn>
-          </v-card-actions>
-        </v-card>      
-      <v-divider></v-divider>
-      <br/>
-      -->
-      <v-card color="#385F73" theme="dark">
+      <!--#385F73-->
+      <v-card color="white">
         <v-card-title class="text-h6">
           กรอกข้อมูลลงทะเบียน
         </v-card-title>      
         <!--<v-sheet width="400" class="mx-auto">-->
-        <form @submit.prevent="submit">            
-            <v-container class="bg-blue-grey-lighten-1">
-              <v-row>
-                <v-col>                  
-                  <v-card color="white">
+        <form @submit.prevent="submit">
+            <!--bg-blue-grey-lighten-1-->
+            <v-container class="white">
+              <!--<v-row>
+                <v-col>
                     <v-radio-group inline>
                       <v-radio label="ฉันสมัครเอง" v-model="runner.registerFor" value="me"></v-radio>
                       <v-radio label="สมัครให้เพื่อน" v-model="runner.registerFor" value="friend"></v-radio>                    
                     </v-radio-group>                                          
-                  </v-card>
                 </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-card color="white">
-                    <v-text-field                      
-                      v-model.trim="runner.name"
-                      :counter="50"
-                      :error-messages="name.errorMessage.value"
-                      label="ชื่อ [ตามหน้าบัตรประจำตัวประชาชน]"
-                      required>
-                    </v-text-field>                    
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-card color="white">
+              </v-row>-->
+              
+                  <v-text-field
+                    name="peopleId"
+                    class="form-input"
+                    v-model.trim="peopleId.value.value"
+                    :counter="13"
+                    :error-messages="peopleId.errorMessage.value"
+                    label="เลขบัตรประจำตัวประชาชน"                        
+                ></v-text-field>
+              
+                  <v-text-field
+                    name="name"
+                    v-model.trim="name.value.value"
+                    color="secondary lighten-4"
+                    :counter="50"                    
+                    :error-messages="name.errorMessage.value"
+                    label="ชื่อ [ตามหน้าบัตรประจำตัวประชาชน]"                        
+                ></v-text-field>
+              
+                  <v-text-field
+                    name="surName"
+                    v-model.trim="surName.value.value"
+                    :counter="50"              
+                    :error-messages="surName.errorMessage.value"      
+                    label="นามสกุล [ตามหน้าบัตรประจำตัวประชาชน]"                    
+                  ></v-text-field>  
+              
+                    <v-radio-group label="กรุณาระบุเพศของท่าน" inline>
+                      <v-radio label="ชาย" v-model="runner.registerFor" value="male"></v-radio>
+                      <v-radio label="หญิง" v-model="runner.registerFor" value="female"></v-radio>
+                      <v-radio label="อื่นๆ" v-model="runner.registerFor" value="other"></v-radio>
+                    </v-radio-group>                                          
+                            
                     <v-text-field
-                        v-model.trim="runner.surName"
-                        :counter="50"
-                        :error-messages="name.errorMessage.value"
-                        label="นามสกุล [ตามหน้าบัตรประจำตัวประชาชน]">
-                    </v-text-field>  
-                  </v-card>
-                </v-col>
-              </v-row>   
-              <v-row>
-                <v-col>
-                  <v-card color="white">                       
-                    <v-text-field
-                        v-model="runner.phoneNo"
-                        :counter="7"
-                        :error-messages="phone.errorMessage.value"
+                        v-model="phoneNo.value.value"
+                        :counter="10"
+                        :error-messages="phoneNo.errorMessage.value"
                         label="เบอร์โทรศัพท์ [ที่สามารถติดต่อได้]">
-                    </v-text-field>
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-card color="white">
+                    </v-text-field>                  
+                
                     <v-text-field
-                        v-model.trim="runner.email"
+                        v-model.trim="email.value.value"
+                        placeholder="example@gmail.com"
                         :error-messages="email.errorMessage.value"
                         label="อีเมล (E-mail)">
-                    </v-text-field>
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-card color="white">
+                    </v-text-field>                  
+                
                     <v-select
-                        v-model="runner.bloodType"
+                        v-model="bloodType.value.value"
                         :items="items"
-                        :error-messages="select.errorMessage.value"
+                        :error-messages="bloodType.errorMessage.value"
                         label="กรุณาระบุหมู่เลือดของท่าน">
-                    </v-select>
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-card color="white">
+                    </v-select>                  
+
                     <v-text-field
-                        v-model.trim="runner.disease"
+                        v-model.trim="disease.value.value"
                         :counter="50"
-                        :error-messages="name.errorMessage.value"
+                        :error-messages="disease.errorMessage.value"
                         label="โรคประจำตัว">
-                    </v-text-field>
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-card color="white">
+                    </v-text-field>                                    
                     <v-text-field
-                        v-model.trim="runner.emergencyContactName"
+                        v-model.trim="emergencyContactName.value.value"
                         :counter="50"
-                        :error-messages="name.errorMessage.value"
+                        :error-messages="emergencyContactName.errorMessage.value"
                         label="ผู้ติดต่อฉุกเฉิน">
-                    </v-text-field>
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-card color="white">
+                    </v-text-field>                  
+                
                     <v-text-field
-                        v-model="runner.emergencyPhoneNo"
+                        v-model="emergencyPhoneNo.value.value"
                         :counter="7"
-                        :error-messages="phone.errorMessage.value"
+                        :error-messages="emergencyPhoneNo.errorMessage.value"
                         label="เบอร์โทรศัพท์ฉุกเฉิน [ที่สามารถติดต่อได้]">
                     </v-text-field>
-                  </v-card>
-                </v-col>
-              </v-row>
               <v-row>
                 <v-col>                  
-                  <v-btn class="me-4" type="submit">submit</v-btn>
-                  <v-btn class="me-4" @click="handleReset">clear</v-btn>
-                  <router-link to="/register">
-                    <v-btn append-icon="mdi-page-next">
+                  <router-link class="me-1" to="/register">
+                    <v-btn color="blue-darken-4" append-icon="mdi-timeline-check-outline">
                       ขั้นตอนทั้งหมด
                     </v-btn>
-                  </router-link>                                    
-                </v-col>
-              </v-row>
-              <br/>
-              <v-row>
-                <v-col>
-                  <router-link to="/register/raceType">
-                    <v-btn @click="run.UpdateCurrentStep(2)">ดำเนินการต่อ</v-btn>
                   </router-link>                  
+                  <v-btn class="me-1" color="blue-darken-4" append-icon="mdi-content-save-move" @click="handleReset">เริ่มใหม่</v-btn>
+                  <v-btn color="blue-darken-4" type="submit" append-icon="mdi-content-save-move">ต่อไป</v-btn>
                 </v-col>
-              </v-row>
+              </v-row>              
             </v-container>
           </form>
         </v-card>
@@ -176,71 +110,114 @@
 <script lang="ts">
   import { ref } from 'vue'
   import { reactive } from 'vue'    
-  import { useLocalStorage } from '@vueuse/core';
-  import { useField, useForm } from 'vee-validate'
+  //import { useLocalStorage } from '@vueuse/core';  
+  import { useForm, useField } from 'vee-validate';
+  import * as yup from 'yup';
   import { useRunStore } from '../../stores/run'
-  //const run = useRunStore()
-  const runner = reactive({
-    userId: "",
-    userName: "?",
-    pictureUrl: "/img/RunningLogo.png", 
-    registerFor: 'me',
-    name: '',
-    surName: '',
-    phoneNo: '',
-    email: '',
-    bloodType: '',
-    disease: 'ไม่มี',
-    emergencyContactName: '',
-    emergencyPhoneNo: ''
-    })
-
+  import { useRouter } from 'vue-router';      
   export default {
     setup () {       
       const run = useRunStore() 
-      const localStorage = useLocalStorage('registeStep','shirt')
+      const router = useRouter()    
+
+      const schema = yup.object({
+        runer: yup.object({
+          name: yup.string().required().min(2),
+          surName: yup.string().required().min(2),
+        })
+      });
+
       const { handleSubmit, handleReset } = useForm({        
         validationSchema: {
-          name (value :any) {
-            if (value?.length >= 2) return true
-
-            return 'Name needs to be at least 2 characters.'
+          peopleId (value :any) {
+            if (value?.length > 12 && /[0-9-]+/.test(value)) return true            
+            return 'เลขบัตรประจำตัวประชาชน ไม่ถูกต้อง'
           },
-          phone (value :any) {
-            if (value?.length > 9 && /[0-9-]+/.test(value)) return true
-
-            return 'Phone number needs to be at least 9 digits.'
+          name (value: any) {
+            if (value?.length >= 2) return true            
+            return 'กรุณาป้อนชื่อ [ตามหน้าบัตรประจำตัวประชาชน] ให้ถูกต้อง'
+          },
+          surName (value: any) {
+            if (value?.length >= 2) return true            
+            return 'กรุณาป้อนนามสกุล [ตามหน้าบัตรประจำตัวประชาชน] ให้ถูกต้อง'
+          },
+          phoneNo (value :any) {
+            if (value?.length > 9 && /[0-9-]+/.test(value)) return true            
+            return 'หมายเลขโทรศัพท์ไม่ถูกต้อง'
           },
           email (value :any) {
             if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) return true
 
-            return 'Must be a valid e-mail.'
+            return 'E-mail ไม่ถูกต้อง'
           },
-          select (value :any) {
+          bloodType (value :any) {
             if (value) return true
-
-            return 'Select an item.'
+            return 'กรุณาระบุหมู่เลือดของท่าน.'
           },
-          checkbox (value :any) {
+          emergencyContactName (value: any) {
+            if (value?.length >= 2) return true            
+            return 'กรุณาป้อนข้อมูลผู้ติดต่อฉุกเฉินให้ถูกต้อง เพื่อประโยชน์ของท่าน'
+          },
+          emergencyPhoneNo (value :any) {
+            if (value?.length > 9 && /[0-9-]+/.test(value)) return true            
+            return 'หมายเลขโทรศัพท์ฉุกเฉินไม่ถูกต้อง'
+          }
+          /*checkbox (value :any) {
             if (value === '1') return true
 
             return 'Must be checked.'
-          },
+          },*/
         },
-      })
+      })      
+
+      const initialRunner = {
+        registerFor: 'me',
+        name: '',
+        surName: '',
+        phoneNo: '',
+        email: '',
+        bloodType: '',
+        disease: 'ไม่มี',
+        emergencyContactName: '',
+        emergencyPhoneNo: ''
+      }
+      const runner = reactive({ ...initialRunner})
+
+      const peopleId = useField('peopleId')
       const name = useField('name')
-      const phone = useField('phone')
+      const surName = useField('surName')
+      const phoneNo = useField('phoneNo');
       const email = useField('email')
-      const select = useField('select')
-      const checkbox = useField('checkbox')
+      const bloodType = useField('bloodType')
+      const disease = useField('disease')      
+      const emergencyContactName = useField('emergencyContactName')
+      const emergencyPhoneNo = useField('emergencyPhoneNo');
 
       const items = ref(['A', 'B', 'AB', 'O'])
 
       const submit = handleSubmit(values => {
-        alert(JSON.stringify(values, null, 2))
+        alert(JSON.stringify(values, null, 2));
+        run.UpdateCurrentStep(2);
+        router.push({ path: '/register/raceType' });
       })
-      
-      return { run, runner, name, phone, email, select, checkbox, items, submit, handleReset }
-    },
+      return { router, run, runner, peopleId, name, surName, phoneNo, email, bloodType, disease, emergencyContactName, emergencyPhoneNo,
+         items, submit, handleReset }
+    }    
   }
 </script>
+
+<style scope>
+.form-input >>> .v-input__slot::after {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.form-input >>> .v-input__slot::before {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+.form-input >>> .error--text {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.form-input >>> input {
+  caret-color: white !important;
+}
+</style>

@@ -36,11 +36,11 @@
     <v-row align="center">
       <v-col>
         <router-link to="/" class="me-4">
-        <v-btn append-icon="mdi-home" variant="flat" color="primary">
+        <v-btn append-icon="mdi-home" variant="flat" color="blue-darken-4">
           กลับหน้าหลัก
         </v-btn></router-link>
         <router-link :to="nextStepLink">
-        <v-btn append-icon="mdi-page-next" variant="flat" color="primary">
+        <v-btn append-icon="mdi-content-save-move" variant="flat" color="blue-darken-4">
           ดำเนินการต่อ
         </v-btn></router-link>
       </v-col>
