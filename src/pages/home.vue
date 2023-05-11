@@ -5,7 +5,7 @@
         </div>
         <br/>
         <div class="text-center">
-            <v-img src="/img/Welcome0.png"></v-img>
+            <v-img src="/img/BankrutProfileImage.jpg"></v-img>
             <br/>
             <router-link to="/register" class="me-4">                    
                 <v-btn append-icon="mdi-timeline-check-outline" color="blue-darken-4">

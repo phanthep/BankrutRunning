@@ -16,7 +16,7 @@
                 </template>      
             <v-toolbar-title>
                 <div>
-                    <strong>Bankrut Beach Running</strong>
+                    <strong>มาวิ่งกันเถอะ❤️</strong>
                 </div>                
                 <div class="pt-0" v-show="isLogin">
                     สวัสดีคุณ : {{user.userName}}
@@ -51,7 +51,7 @@
                 </div>                  
                 <v-divider></v-divider>
             <div>
-                <strong>ชมรมธุรกิจท่องเที่ยวบ้านกรูด (ช.ท.บก.)</strong>
+                <strong>มาวิ่งกันเถอะ❤️</strong>
                  <!--<strong>Bankrut Tourism Business Club (B.T.B.C.)</strong>-->
             </div>
             </v-footer>
@@ -76,7 +76,7 @@ export default defineComponent({
     return {
         drawer: true,
         user,
-        isLogin: true, 
+        isLogin: false, 
         message: "",
         error: "",
         items: [
@@ -100,7 +100,7 @@ export default defineComponent({
     liff
       .init({
         liffId: import.meta.env.VITE_LIFF_ID,
-        //withLoginOnExternalBrowser: true
+        withLoginOnExternalBrowser: true
       })
       .then(async () => {
         this.message = "LIFF init succeeded.";

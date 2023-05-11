@@ -3,7 +3,7 @@
       <!--#385F73-->
       <v-card color="white">
         <v-card-title class="text-h6">
-          กรอกข้อมูลลงทะเบียน
+          <h3>กรอกข้อมูลลงทะเบียน</h3>
         </v-card-title>      
         <!--<v-sheet width="400" class="mx-auto">-->
         <form @submit.prevent="submit">
@@ -86,7 +86,7 @@
                 
                     <v-text-field
                         v-model="emergencyPhoneNo.value.value"
-                        :counter="7"
+                        :counter="10"
                         :error-messages="emergencyPhoneNo.errorMessage.value"
                         label="เบอร์โทรศัพท์ฉุกเฉิน [ที่สามารถติดต่อได้]">
                     </v-text-field>
@@ -98,7 +98,11 @@
                     </v-btn>
                   </router-link>                  
                   <v-btn class="me-1" color="blue-darken-4" append-icon="mdi-content-save-move" @click="handleReset">เริ่มใหม่</v-btn>
-                  <v-btn color="blue-darken-4" type="submit" append-icon="mdi-content-save-move">ต่อไป</v-btn>
+                  <!--<v-btn color="blue-darken-4" type="submit" append-icon="mdi-content-save-move">ต่อไป</v-btn>-->
+                  <router-link to="/register/raceType">
+                    <v-btn color="blue-darken-4" append-icon="mdi-content-save-move" @click="run.UpdateCurrentStep(2)">ต่อไป</v-btn>
+                  </router-link>
+                  
                 </v-col>
               </v-row>              
             </v-container>
@@ -196,28 +200,19 @@
       const items = ref(['A', 'B', 'AB', 'O'])
 
       const submit = handleSubmit(values => {
-        alert(JSON.stringify(values, null, 2));
+        //alert(JSON.stringify(values, null, 2));
         run.UpdateCurrentStep(2);
         router.push({ path: '/register/raceType' });
-      })
+      })      
       return { router, run, runner, peopleId, name, surName, phoneNo, email, bloodType, disease, emergencyContactName, emergencyPhoneNo,
          items, submit, handleReset }
-    }    
+    },
+    method :{
+      NextStep() {
+        //alert(JSON.stringify(values, null, 2));
+        this.run.UpdateCurrentStep(2);
+        this.router.push({ path: '/register/raceType' });
+      }
+    }
   }
 </script>
-
-<style scope>
-.form-input >>> .v-input__slot::after {
-  border-color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.form-input >>> .v-input__slot::before {
-  border-color: rgba(255, 255, 255, 0.7) !important;
-}
-.form-input >>> .error--text {
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-.form-input >>> input {
-  caret-color: white !important;
-}
-</style>

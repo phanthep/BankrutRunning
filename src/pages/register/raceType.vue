@@ -1,10 +1,15 @@
 <template>
     <div v-show="true">
         <v-container class="bg-blue-grey-lighten-1">
+            <h3>เลือกระยะวิ่ง</h3>
             <div class="text-center">
-                <v-img src="/img/race.jpg"></v-img>
-                
+                <v-img src="/img/race.png"></v-img>                
                 <br/>
+                <v-radio-group inline>
+                      <v-radio label="ระยะ 5 กม." value="5"></v-radio>
+                      <v-radio label="ระยะ 10 กม." value="10"></v-radio>
+                      <v-radio label="VIP" value="vip"></v-radio>
+                    </v-radio-group>   
                 <router-link class="me-4" to="/register">
                     <v-btn color="blue-darken-4" append-icon="mdi-timeline-check-outline">
                       ขั้นตอนทั้งหมด

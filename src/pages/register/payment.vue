@@ -2,7 +2,8 @@
     <div v-show="true">
         <v-container class="bg-blue-grey-lighten-1">
             <div class="text-center">
-                <v-img src="/img/payment.jpg"></v-img>
+                <h3>ชำระเงิน</h3>
+                <v-img src="/img/payment.png"></v-img>
                 <h3>หลังจากยืนยันการชำระเงินแล้ว จะไม่สามารถแก้ไขข้อมูลก่อนหน้าได้ กรุณาตรวจสอบความถูกต้องอีกครั้งก่อนยืนยันชำระเงิน</h3>
                 <br/>
                 <router-link class="me-4" to="/register">
